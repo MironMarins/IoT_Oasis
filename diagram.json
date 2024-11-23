@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "author": "Miorn Gonçalves Marins",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -70.2, "left": -102.8, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -86.4, "left": -254.36, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -170.4,
+      "left": 136.2,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": -82.2, "left": 278.5, "attrs": {} },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring1",
+      "top": -229.76,
+      "left": -66.01,
+      "attrs": { "pixels": "16" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": 170.6,
+      "left": -57.6,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ring1:GND", "bb1:tn.7", "black", [ "v0" ] ],
+    [ "bb1:tn.1", "esp:GND.2", "black", [ "v-0.1", "h-46.4", "v-9.6" ] ],
+    [ "esp:5V", "bb1:tp.1", "red", [ "h-38.25", "v-249.6", "h9.6" ] ],
+    [ "ring1:VCC", "bb1:tp.8", "red", [ "v0" ] ],
+    [ "ring1:DIN", "bb1:11t.a", "green", [ "v0" ] ],
+    [ "esp:2", "bb1:11t.e", "green", [ "h9.6", "v-48", "h153.6" ] ],
+    [ "bz1:1", "bb1:tn.22", "black", [ "v0" ] ],
+    [ "esp:18", "bb1:28t.b", "magenta", [ "h9.6", "v-28.8" ] ],
+    [ "bz1:2", "bb1:28t.a", "magenta", [ "v0" ] ],
+    [ "rtc1:GND", "bb1:tn.25", "black", [ "h-19.2", "v9.6" ] ],
+    [ "rtc1:5V", "bb1:tp.25", "red", [ "h0" ] ],
+    [ "rtc1:SDA", "bb1:25t.c", "orange", [ "h-19.2", "v18.9", "h-38.4", "v28.8", "h-9.6" ] ],
+    [ "rtc1:SCL", "bb1:29t.d", "blue", [ "h-38.4", "v57.4" ] ],
+    [ "esp:21", "bb1:25t.d", "orange", [ "h28.8", "v19.2" ] ],
+    [ "bb1:22t.d", "bb1:20t.d", "green", [ "v0" ] ],
+    [ "esp:22", "bb1:29t.a", "blue", [ "h19.2", "v9.6", "h316.8" ] ],
+    [ "btn1:2.r", "bb1:bn.10", "black", [ "h0" ] ],
+    [ "esp:CMD", "bb1:bn.1", "black", [ "h-19.05", "v28.8", "h153.6", "v-9.6" ] ],
+    [ "esp:15", "btn1:1.l", "cyan", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
